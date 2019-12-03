@@ -13,6 +13,10 @@ struct Day2 : Solution {
   typealias OutputType = Int
 
   func solve(_ inputs: [[Int]]) -> Int {
+    return solve1(inputs)
+  }
+
+  func solve1(_ inputs: [[Int]]) -> Int {
     assert(inputs.count == 1)
     var input = inputs[0]
     for i in stride(from: 0, to: input.count, by: 4) {
