@@ -63,20 +63,12 @@
 		1A9F76B1239606FC00349E17 /* AdventOfCode2019 */ = {
 			isa = PBXGroup;
 			children = (
-				1A9F76BA2396073000349E17 /* Day1 */,
-				1A9F76C023961FD300349E17 /* Day2 */,
+				1A9F76BB2396074C00349E17 /* Day1.swift */,
+				1A9F76C123961FE700349E17 /* Day2.swift */,
 				1A9F76BD2396077E00349E17 /* Common */,
 				1A9F76B2239606FC00349E17 /* main.swift */,
 			);
 			path = AdventOfCode2019;
-			sourceTree = "<group>";
-		};
-		1A9F76BA2396073000349E17 /* Day1 */ = {
-			isa = PBXGroup;
-			children = (
-				1A9F76BB2396074C00349E17 /* Day1.swift */,
-			);
-			path = Day1;
 			sourceTree = "<group>";
 		};
 		1A9F76BD2396077E00349E17 /* Common */ = {
@@ -85,14 +77,6 @@
 				1A9F76BE2396079F00349E17 /* Solution.swift */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		1A9F76C023961FD300349E17 /* Day2 */ = {
-			isa = PBXGroup;
-			children = (
-				1A9F76C123961FE700349E17 /* Day2.swift */,
-			);
-			path = Day2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
