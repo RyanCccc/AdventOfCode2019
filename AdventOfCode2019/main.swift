@@ -8,5 +8,7 @@
 
 import Foundation
 
-print("Hello, World!")
-
+let day1 = Day1()
+let day2 = Day2()
+//day1.solution()
+day2.solution()
