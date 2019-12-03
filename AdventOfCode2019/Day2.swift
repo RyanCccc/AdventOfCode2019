@@ -13,16 +13,36 @@ struct Day2 : Solution {
   typealias OutputType = Int
 
   func solve(_ inputs: [[Int]]) -> Int {
-    return solve1(inputs)
+//    return solve1(inputs)
+    return solve2(inputs)
   }
 
   func solve1(_ inputs: [[Int]]) -> Int {
+    return getOutputByReplacing(inputs, noun: 12, verb: 02)
+  }
+
+  func solve2(_ inputs: [[Int]]) -> Int {
+    for noun in 0...99 {
+      for verb in 0...99 {
+        let output = getOutputByReplacing(inputs, noun: noun, verb: verb)
+        if output == 19690720 {
+          return noun * 100 + verb
+        }
+      }
+    }
+    assert(false, "not found")
+    return 0
+  }
+
+  func getOutputByReplacing(_ inputs: [[Int]], noun: Int, verb: Int) -> Int {
     assert(inputs.count == 1)
     var input = inputs[0]
+    assert(input.count > 2)
+    input[1] = noun
+    input[2] = verb
     for i in stride(from: 0, to: input.count, by: 4) {
       let opcode = input[i]
       if opcode == 99 {
-        print(input)
         return input[0]
       }
       assert(input.count > i+3)
@@ -43,16 +63,13 @@ struct Day2 : Solution {
         assert(false, "Bad input");
       }
     }
+    assert(false, "Bad input");
     return input[0]
   }
 
   func convertStringToInput(_ str: String) -> [Int] {
-    var input = str.split(separator: ",").map { (substr) -> Int in
+    return str.split(separator: ",").map { (substr) -> Int in
       return Int(substr)!
     }
-    assert(input.count > 2)
-    input[1] = 12
-    input[2] = 2
-    return input
   }
 }
