@@ -8,20 +8,38 @@
 
 import Foundation
 
+enum Part {
+  case part1, part2
+}
+
 protocol Solution : UserInputHandler {
   associatedtype OutputType : LosslessStringConvertible
-  func solve(_ inputs: [InputType]) -> OutputType;
+  func part1(_ inputs: [InputType]) -> OutputType;
+  func part2(_ inputs: [InputType]) -> OutputType;
 }
 
 extension Solution {
-  func solution() {
+  func solution(part: Part) {
     let inputs = getInputs()
-    print(String(solve(inputs)))
+    solution(inputs, part: part)
   }
 
-  func solution(_ str: String) {
+  func solution(_ str: String, part: Part) {
     let inputs = getInputs(str.components(separatedBy: "\n"))
-    print(String(solve(inputs)))
+    solution(inputs, part: part)
+  }
+
+  private func solution(_ inputs: [InputType], part: Part) {
+    print(String(solve(inputs, part: part)))
+  }
+
+  private func solve(_ inputs: [InputType], part: Part) -> OutputType {
+    switch part {
+    case .part1:
+      return part1(inputs)
+    case .part2:
+      return part2(inputs)
+    }
   }
 }
 

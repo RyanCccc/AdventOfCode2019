@@ -12,16 +12,11 @@ struct Day2 : Solution {
   typealias InputType = [Int]
   typealias OutputType = Int
 
-  func solve(_ inputs: [[Int]]) -> Int {
-//    return solve1(inputs)
-    return solve2(inputs)
-  }
-
-  func solve1(_ inputs: [[Int]]) -> Int {
+  func part1(_ inputs: [[Int]]) -> Int {
     return getOutputByReplacing(inputs, noun: 12, verb: 02)
   }
 
-  func solve2(_ inputs: [[Int]]) -> Int {
+  func part2(_ inputs: [[Int]]) -> Int {
     for noun in 0...99 {
       for verb in 0...99 {
         let output = getOutputByReplacing(inputs, noun: noun, verb: verb)

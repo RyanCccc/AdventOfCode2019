@@ -16,12 +16,7 @@ struct Day1 : Solution {
     return Int(str)!
   }
 
-  func solve(_ inputs: [Int]) -> Int {
-//    return getFuel1(inputs)
-    return getFuel2(inputs)
-  }
-
-  func getFuel1(_ inputs: [Int]) -> Int {
+  func part1(_ inputs: [Int]) -> Int {
     var total = 0
     for mass in inputs {
       let cur = mass / 3 - 2
@@ -30,7 +25,7 @@ struct Day1 : Solution {
     return total
   }
 
-  func getFuel2(_ inputs: [Int]) -> Int {
+  func part2(_ inputs: [Int]) -> Int {
     var total = 0
     for mass in inputs {
       let cur = getTotoalFuelFromFuel(mass)

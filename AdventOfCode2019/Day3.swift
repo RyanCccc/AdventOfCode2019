@@ -18,7 +18,7 @@ struct Day3 : Solution {
     case up(Int)
     case down(Int)
 
-    func go(_ p: Point) -> [Point] {
+    fileprivate func go(_ p: Point) -> [Point] {
       var points = [Point]()
       switch self {
       case .up(let val):
@@ -42,12 +42,12 @@ struct Day3 : Solution {
     }
   }
 
-  struct Point : Hashable {
+  fileprivate struct Point : Hashable {
     var x : Int
     var y : Int
   }
 
-  func solve(_ inputs: [[Direction]]) -> Int {
+  func part1(_ inputs: [[Direction]]) -> Int {
     assert(inputs.count == 2)
     let wire1Input = inputs[0]
     let wire2Input = inputs[1]
@@ -63,6 +63,21 @@ struct Day3 : Solution {
     return distance
   }
 
+  func part2(_ inputs: [[Direction]]) -> Int {
+    assert(inputs.count == 2)
+    let wire1Input = inputs[0]
+    let wire2Input = inputs[1]
+    let wire1 = generateWireWithDistance(wire1Input)
+    let wire2 = generateWireWithDistance(wire2Input)
+    var distance = Int.max
+    for (p1, d1) in wire1 {
+      if let d2 = wire2[p1] {
+        distance = min(d1+d2, distance)
+      }
+    }
+    return distance
+  }
+
   private func generateWire(_ input: [Direction]) -> Set<Point> {
     var wire = Set<Point>()
     var cur = Point(x: 0, y: 0)
@@ -73,6 +88,25 @@ struct Day3 : Solution {
       }
       cur = route.last!
     }
+    return wire
+  }
+
+  private func generateWireWithDistance(_ input: [Direction]) -> [Point:Int] {
+    var wire = [Point:Int]()
+    var cur = Point(x: 0, y: 0)
+    var curDistance = 0
+    for d in input {
+      let route = d.go(cur)
+      route.forEach { (p) in
+        if (wire[p] == nil) {
+          wire[p] = curDistance
+        }
+        curDistance += 1
+      }
+      curDistance -= 1
+      cur = route.last!
+    }
+    wire[Point(x: 0,y: 0)] = nil
     return wire
   }
 
