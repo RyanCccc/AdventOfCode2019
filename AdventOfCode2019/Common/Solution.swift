@@ -18,6 +18,11 @@ extension Solution {
     let inputs = getInputs()
     print(String(solve(inputs)))
   }
+
+  func solution(_ str: String) {
+    let inputs = getInputs(str.components(separatedBy: "\n"))
+    print(String(solve(inputs)))
+  }
 }
 
 protocol UserInputHandler {
@@ -35,8 +40,12 @@ extension UserInputHandler {
   }
 
   func getInputs() -> [InputType] {
+    getInputs(readLines())
+  }
+
+  func getInputs(_ strs: [String]) -> [InputType] {
     var inputs = [InputType]()
-    for line in readLines() {
+    for line in strs {
       inputs.append(convertStringToInput(line))
     }
     return inputs
