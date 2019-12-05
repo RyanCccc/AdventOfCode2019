@@ -11,4 +11,5 @@ import Foundation
 let day1 = Day1()
 let day2 = Day2()
 let day3 = Day3()
-day3.solution(part: .part2)
+let day4 = Day4()
+day4.solution(part: .part2)
